@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Medicines - MedPlus Pharmacy</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+    .product {
+      width: 180px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      background: #fff8f0;
+      transition: 0.3s;
+    }
+    .product:hover {
+      background: #ffe5b4;
+      transform: scale(1.05);
+    }
+    .product img {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>All Medicines</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 🧴 Available Medicines -->
+    <section class="product-section">
+      <h2> Stock1 Available Medicines</h2>
+      <div id="stock1"></div>
+      <div class="product-grid">
+        <div class="product">
+          <img src="images/paracetamol.jpg" alt="Paracetamol">
+          <h3>Paracetamol</h3>
+          <p>₹50</p>
+          <button>Add to Cart</button>
+        </div>
+
+        <div class="product">
+          <img src="images/vitaminC.jpg" alt="Vitamin C">
+          <h3>Vitamin C</h3>
+          <p>₹120</p>
+          <button>Add to Cart</button>
+        </div>
+
+        <div class="product">
+          <img src="images/antibiotic.jpg" alt="Antibiotic">
+          <h3>Antibiotic</h3>
+          <p>₹220</p>
+          <button>Add to Cart</button>
+        </div>
+
+        <div class="product">
+          <img src="images/painrelief.jpg" alt="Pain Relief Gel">
+          <h3>Pain Relief Gel</h3>
+          <p>₹110</p>
+          <button>Add to Cart</button>
+        </div>
+
+        <div class="product">
+          <img src="images/coughsyrup.jpg" alt="Cough Syrup">
+          <h3>Cough Syrup</h3>
+          <p>₹90</p>
+          <button>Add to Cart</button>
+        </div>
+
+        <div class="product">
+          <img src="images/thermometer.jpg" alt="Thermometer">
+          <h3>Thermometer</h3>
+          <p>₹150</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 💊 Online Added Medicines -->
+    <section class="product-section">
+      <h2>stock2 Medicines</h2>
+      <div id="stock2"></div>
+      <div id="productList" class="product-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 MedPlus Pharmacy | info@medplus.com</p>
+  </footer>
+
+  <script>
+    // ✅ 
+    document.addEventListener("DOMContentLoaded", () => {
+      const onlineProducts = [
+        { name: "First Aid Kit", price: "₹400", image: "images/firstaid.jpg" },
+        { name: "Band Aid", price: "₹40", image: "images/bandaid.jpg" },
+        { name: "Sanitizer 200ml", price: "₹80", image: "images/sanitizer.jpg" },
+        { name: "Blood Pressure Monitor", price: "₹1200", image: "images/bpmonitor.jpg" },
+        { name: "Diabetes Test Kit", price: "₹600", image: "images/dbkit.jpg" }
+      ];
+
+      const productList = document.getElementById("productList");
+      productList.innerHTML = onlineProducts.map(p => `
+        <div class="product">
+          <img src="${p.image}" alt="${p.name}">
+          <h3>${p.name}</h3>
+          <p>${p.price}</p>
+          <button>Add to Cart</button>
+        </div>
+      `).join("");
+    });
+  </script>
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedPlus Pharmacy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <header>
+  <h1>MedPlus Pharmacy</h1>
+  <img src="images\menu.jpg" alt="Medicine Image" style="width:300px;">
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a> 
+    <a href="contact.html">Contact</a>
+    <a href="feedback.html">Feedback</a>
+  </nav>
+
+  
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search for medicines...">
+    <button id="searchButton">Search</button>
+  </div>
+</header>
+
+
+  <main>
+    <h2>Welcome to MedPlus Pharmacy</h2>
+    <div id="featuredProducts" class="product-grid"></div>
+    <button onclick="window.location.href='products.html'">Shop Now</button>
+
+  </main>
+
+  <footer>
+    <p>© 2025 MedPlus Pharmacy | info@medplus.com</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

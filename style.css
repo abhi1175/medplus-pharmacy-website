@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f8f9fa;
+}
+
+header {
+  background: #0066cc;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+}
+
+header .logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+header input {
+  width: 300px;
+  padding: 6px;
+  border-radius: 4px;
+  border: none;
+}
+
+/* 🔹 Navigation links */
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* 🟠 Orange hover effect */
+nav a:hover {
+  background-color: orange;
+  color: white;
+}
+.hero {
+  text-align: center;
+  background: linear-gradient(to right, #66ccff, #0099cc);
+  color: white;
+  padding: 60px 20px;
+}
+
+.hero button {
+  padding: 10px 20px;
+  border: none;
+  background: white;
+  color: #0099cc;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.featured {
+  padding: 20px;
+}
+
+/* Product grid layout */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Product card styling */
+.product {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  padding: 15px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;  /* vertical stacking */
+  align-items: center;
+  justify-content: space-between;
+  height: 250px;
+}
+
+/* Fix image size */
+.product img {
+  width: 120px;     /* smaller image */
+  height: 120px;
+  object-fit: contain;   /* keep proportions */
+  margin-bottom: 10px;
+}
+
+/* Product title and price */
+.product h3, .product p {
+  margin: 5px 0;
+}
+
+.search-bar {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.search-bar input {
+  padding: 8px;
+  width: 100px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-bar button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+}

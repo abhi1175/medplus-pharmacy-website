@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Products Test - MedPlus</title>
+
+<!-- Inline CSS so no external file conflicts -->
+<style>
+  body { margin: 0; font-family: Arial, sans-serif; background:#f5f7fb; }
+  header { background:#1976d2; color:#fff; padding:14px 20px; }
+  header h1 { margin:0; font-size:20px; }
+
+  /* grid container */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 18px;
+    padding: 18px;
+    max-width: 1100px;
+    margin: 16px auto;
+  }
+
+  /* product card: vertical layout */
+  .product {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 260px; /* fixed card height so all equal */
+  }
+
+  /* image box: keeps images contained and same size */
+  .product .imgbox {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  .product .imgbox img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform .25s ease;
+  }
+
+  .product .imgbox img:hover { transform: scale(1.07); }
+
+  .product h3 { margin: 6px 0 4px; font-size:16px; color:#222; }
+  .product p.price { margin:0 0 10px; color:#007b00; font-weight:600; }
+
+  .product button {
+    border: none;
+    background: #ff8c00;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .product button:hover { filter:brightness(.95); }
+
+  /* small screen tweak */
+  @media (max-width:420px){
+    .product { height: auto; padding:10px; }
+    .product .imgbox { width:120px; height:120px; }
+  }
+</style>
+</head>
+<body>
+  <header><h1>All Medicines</h1></header>
+
+  <main>
+    <div class="product-grid" id="productGrid">
+      <!-- If you prefer manual cards, paste them here. Otherwise the script below will load products -->
+    </div>
+  </main>
+
+  <script>
+    // Quick check: ensure the productGrid element exists
+    const productGrid = document.getElementById('productGrid');
+    console.log('productGrid found =', !!productGrid);
+
+    // Replace these image filenames with the exact names you have inside your images folder.
+    // IMPORTANT: images must be in a folder named "images" next to this HTML file.
+    const products = [
+      { name: "Paracetamol 500mg", price: 25, image: "images/paracetamol.jpg" },
+      { name: "Cough Syrup", price: 90, image: "images/coughsyrup.jpg" },
+      { name: "Vitamin C-500", price: 150, image: "images/vitamin.jpg" },
+      { name: "Pain Relief Gel", price: 75, image: "images/painrelief.jpg" },
+      { name: "Antibiotic Capsule", price: 60, image: "images/antibiotic.jpg" },
+      { name: "Digital Thermometer", price: 250, image: "images/thermometer.jpg" }
+    ];
+
+    // Render products
+    if (productGrid) {
+      productGrid.innerHTML = products.map(p => `
+        <div class="product">
+          <div class="imgbox">
+            <img src="${p.image}" alt="${p.name}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%27140%27 height=%27140%27><rect width=%27100%25%27 height=%27100%25%27 fill=%27%23f0f0f0%27/><text x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27%23999%27 font-size=%2712%27>Image not found</text></svg>';">
+          </div>
+          <div>
+            <h3>${p.name}</h3>
+            <p class="price">₹${p.price}</p>
+            <button type="button">Add to Cart</button>
+          </div>
+        </div>
+      `).join('');
+    } else {
+      console.error('productGrid element missing from HTML');
+    }
+  </script>
+</body>
+</html>

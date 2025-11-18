@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback | MedPlus Pharmacy</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Optional styling for error messages */
+    .error {
+      color: red;
+      font-size: 14px;
+      margin: 4px 0 10px;
+      display: block;
+    }
+    .success {
+      color: green;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">💊 MedPlus</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="featured">
+  <h2>We Value Your Feedback</h2>
+  <form id="feedbackForm" style="max-width:400px;margin:auto;text-align:left;">
+    <label>Name:</label><br>
+    <input type="text" id="name" placeholder="Enter your name">
+    <span id="nameError" class="error"></span>
+
+    <label>Email:</label><br>
+    <input type="email" id="email" placeholder="Enter your email">
+    <span id="emailError" class="error"></span>
+
+    <label>Message:</label><br>
+    <textarea id="message" rows="4" placeholder="Write your feedback"></textarea>
+    <span id="messageError" class="error"></span>
+
+    <button type="submit">Submit Feedback</button>
+    <div id="successMsg" class="success"></div>
+  </form>
+</section>
+
+<footer>
+  <p>© 2025 MedPlus Pharmacy</p>
+</footer>
+
+<script>
+document.getElementById('feedbackForm').addEventListener('submit', e => {
+  e.preventDefault();
+
+  // Clear old errors
+  document.getElementById("nameError").textContent = "";
+  document.getElementById("emailError").textContent = "";
+  document.getElementById("messageError").textContent = "";
+  document.getElementById("successMsg").textContent = "";
+
+  let name = document.getElementById('name').value.trim();
+  let email = document.getElementById('email').value.trim();
+  let message = document.getElementById('message').value.trim();
+  let isValid = true;
+
+  // Validate Name
+  if (name === "") {
+    document.getElementById("nameError").textContent = "Name is required.";
+    isValid = false;
+  }
+
+  // Validate Email
+  let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (email === "") {
+    document.getElementById("emailError").textContent = "Email is required.";
+    isValid = false;
+  } else if (!emailPattern.test(email)) {
+    document.getElementById("emailError").textContent = "Enter a valid email address.";
+    isValid = false;
+  }
+
+  // Validate Message
+  if (message.length < 10) {
+    document.getElementById("messageError").textContent = "Message must be at least 10 characters long.";
+    isValid = false;
+  }
+
+  // If everything is valid
+  if (isValid) {
+    // Ask confirmation before submitting
+    if (confirm("Are you sure you want to submit your feedback?")) {
+      document.getElementById("successMsg").textContent = "✅ Thank you! Your feedback has been submitted successfully.";
+      e.target.reset();
+    }
+  }
+});
+</script>
+
+</body>
+</html>
